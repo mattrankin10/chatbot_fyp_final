@@ -1,0 +1,24 @@
+{"intents": [
+  {"tag": "greeting",
+    "patterns": ["Hi", "How are you","Is anyone there?", "Hello","What's up?"],
+    "responses": ["Hello!", "Howdy! Good to see you again", "Hi buddy how can I help?"],
+    "context_set": ""
+  },
+  {"tag": "goodbye",
+    "patterns": ["cya", "got to run","I'm off now", "Goodbye"],
+    "responses": ["Sad to see you go", "Speak soon", "Goodbye!"],
+    "context_set": ""
+  },
+    {"tag": "age",
+    "patterns": ["how old are you", "what is your age","age?"],
+    "responses": ["I am 1 day old!"],
+    "context_set": ""
+  },
+    {"tag": "name",
+    "patterns": ["what are you called?", "what can I call you?","do you have a name?", "who are you?"],
+    "responses": ["my name is Jurgan!", "I am Jurgan Klopp", "You can call me the Klopp"],
+    "context_set": ""
+  }
+]
+
+}
