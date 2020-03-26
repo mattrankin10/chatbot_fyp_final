@@ -31,6 +31,7 @@ def preprocess_sentence(sentence):
     return sentence
 
 
+
 def load_conversations():
     inputs = []
     outputs = []
@@ -165,7 +166,7 @@ def predict(sentence):
     return predicted_sentence
 
 
-sentence = 'I am not crazy, my mother had me tested.'
+sentence = 'I am not crazy, my mother had me tested, I promise'
 for _ in range(5):
     sentence = predict(sentence)
     print('')
