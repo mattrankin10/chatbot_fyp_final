@@ -101,3 +101,5 @@ def prepare():
             f.write(clean_line(thread["response"]) + '\n')
 
     os.chdir(original_cwd)
+
+prepare()
