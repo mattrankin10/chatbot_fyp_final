@@ -11,7 +11,7 @@ original_cwd = os.getcwd()
 bucket_name = 'amazonqavideogames'
 client = storage.Client()
 bucket = client.get_bucket(bucket_name)
-blobs = bucket.list_blobs()
+blobs = client.list_blobs(bucket_name)
 
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
@@ -101,7 +101,3 @@ def prepare():
             f.write(clean_line(thread["response"]) + '\n')
 
     os.chdir(original_cwd)
-
-
-if __name__ == "__main__":
-    prepare()
