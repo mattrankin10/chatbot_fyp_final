@@ -58,10 +58,10 @@ def prepare():
     data_train = []
 
     # download objects from gcs
-    for blob_name in blob_reduced:
-        if str(blob_name).startswith('reddit/20200307/train'):
+    for blob_name in blobs:
+        if str(blob_name.name).startswith('reddit/20200307/train'):
             download_blob(bucket_name, blob_name, 'train/' + blob_name.partition('reddit/20200307/')[2])
-        elif str(blob_name).startswith('reddit/20200307/test'):
+        elif str(blob_name.name).startswith('reddit/20200307/test'):
             download_blob(bucket_name, blob_name, 'test/' + blob_name.partition('reddit/20200307/')[2])
 
     # append test and train arrays with threads
