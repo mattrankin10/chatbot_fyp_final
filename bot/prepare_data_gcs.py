@@ -16,9 +16,6 @@ blob_list = []
 for blob in blobs:
     blob_list.append(blob)
 
-print(blob_list[300].name.partition('reddit/20200307/')[2])
-
-
 
 blob_reduced = ["reddit/20200307/train-00020-of-01000.json", "reddit/20200307/train-00021-of-01000.json", "reddit/20200307/test-00020-of-01000.json", "reddit/20200307/test-00021-of-01000.json"]
 
@@ -116,3 +113,4 @@ def prepare():
     os.chdir(original_cwd)
 
 
+prepare()
