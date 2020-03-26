@@ -12,12 +12,6 @@ bucket_name = 'amazonqavideogames'
 client = storage.Client()
 bucket = client.get_bucket(bucket_name)
 blobs = client.list_blobs(bucket_name)
-blob_list = []
-for blob in blobs:
-    blob_list.append(blob.name)
-
-
-blob_reduced = ["reddit/20200307/train-00020-of-01000.json", "reddit/20200307/train-00021-of-01000.json", "reddit/20200307/test-00020-of-01000.json", "reddit/20200307/test-00021-of-01000.json"]
 
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
@@ -63,11 +57,11 @@ def prepare():
     data_train = []
 
     # download objects from gcs
-    for blob_name in blob_reduced:
+    for blob_name in blobs:
         if str(blob_name).startswith('reddit/20200307/train'):
-            download_blob(bucket_name, blob_name, 'train/' + blob_name.partition('reddit/20200307/')[2])
+            download_blob(bucket_name, blob_name.name, 'train/' + blob_name.partition('reddit/20200307/')[2])
         elif str(blob_name).startswith('reddit/20200307/test'):
-            download_blob(bucket_name, blob_name, 'test/' + blob_name.partition('reddit/20200307/')[2])
+            download_blob(bucket_name, blob_name.name, 'test/' + blob_name.partition('reddit/20200307/')[2])
 
     # append test and train arrays with threads
     os.chdir(os.getcwd() + "/train")
