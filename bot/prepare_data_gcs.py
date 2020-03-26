@@ -6,6 +6,8 @@ from google.cloud import storage
 import os
 import errno
 
+original_cwd = os.getcwd()
+
 bucket_name = 'amazonqavideogames'
 client = storage.Client()
 bucket = client.get_bucket(bucket_name)
@@ -36,9 +38,6 @@ def mkdir(path):
             raise
 
 
-mkdir('blobs')
-
-
 def clean_file(file):
     return file.truncate(0)
 
@@ -48,6 +47,7 @@ def clean_line(line):
 
 
 def prepare():
+    mkdir('blobs')
     # create JSON object from data
     data_test = []
     data_train = []
@@ -99,6 +99,8 @@ def prepare():
         clean_file(f)
         for thread in data_train:
             f.write(clean_line(thread["response"]) + '\n')
+
+    os.chdir(original_cwd)
 
 
 if __name__ == "__main__":
