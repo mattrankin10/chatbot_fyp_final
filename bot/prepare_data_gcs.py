@@ -48,20 +48,24 @@ def clean_line(line):
 
 def prepare():
     mkdir('blobs')
+    os.chdir('blobs/')
+    mkdir('train/')
+    mkdir('test/')
+
     # create JSON object from data
     data_test = []
     data_train = []
 
     # download objects from gcs
     for blob_name in blobs:
-        if str(blob_name.name).startswith('reddit/20200307/train'):
-            download_blob(bucket_name, blob_name, 'blobs/train/' + blob_name.partition('reddit/20200307/')[2])
-        elif str(blob_name.name).startswith('reddit/20200307/test'):
-            download_blob(bucket_name, blob_name, 'blobs/test/' + blob_name.partition('reddit/20200307/')[2])
+        if str(blob_name).startswith('reddit/20200307/train'):
+            download_blob(bucket_name, blob_name, 'train/' + blob_name.partition('reddit/20200307/')[2])
+        elif str(blob_name).startswith('reddit/20200307/test'):
+            download_blob(bucket_name, blob_name, 'test/' + blob_name.partition('reddit/20200307/')[2])
 
     # append test and train arrays with threads
-    for file in os.listdir('blobs/train/'):
-        os.chdir('blobs/train/')
+    for file in os.listdir('train/'):
+        os.chdir('train/')
         with open(file) as f:
             for line in f:
                 thread = json.loads(line)
@@ -101,5 +105,6 @@ def prepare():
             f.write(clean_line(thread["response"]) + '\n')
 
     os.chdir(original_cwd)
+
 
 prepare()
