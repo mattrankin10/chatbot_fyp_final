@@ -16,6 +16,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
+
 def clean_line(line):
     return line.replace("\n", "").replace("\r", "")
 
@@ -35,6 +36,8 @@ def preprocess_sentence(sentence):
 
 MAX_SAMPLES = 2000
 
+
+device = 'gpu'
 
 def load_conversations():
     inputs = []
@@ -93,12 +96,14 @@ def tokenize_and_filter(inputs, outputs):
             tokenized_outputs.append(sentence2)
 
     # pad tokenized sentences
-    tokenized_inputs = tf.keras.preprocessing.sequence.pad_sequences(
-        tokenized_inputs, maxlen=MAX_LENGTH, padding='post')
-    tokenized_outputs = tf.keras.preprocessing.sequence.pad_sequences(
-        tokenized_outputs, maxlen=MAX_LENGTH, padding='post')
 
-    return tokenized_inputs, tokenized_outputs
+    with tf.device(device):
+        tokenized_inputs = tf.keras.preprocessing.sequence.pad_sequences(
+            tokenized_inputs, maxlen=MAX_LENGTH, padding='post')
+        tokenized_outputs = tf.keras.preprocessing.sequence.pad_sequences(
+            tokenized_outputs, maxlen=MAX_LENGTH, padding='post')
+
+        return tokenized_inputs, tokenized_outputs
 
 
 questions, answers = tokenize_and_filter(questions, answers)
@@ -116,52 +121,53 @@ decoder_target_data = np.array(onehot_a_lines)
 print('Decoder target data shape -> {}'.format(decoder_target_data.shape))
 
 # model
-encoder_inputs = tf.keras.layers.Input(shape=(None,))
-encoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256, mask_zero=True)(encoder_inputs)
-encoder_outputs, state_h, state_c = tf.keras.layers.LSTM(128, return_state=True)(encoder_embedding)
-encoder_states = [state_h, state_c]
+with tf.device(device):
+    encoder_inputs = tf.keras.layers.Input(shape=(None,))
+    encoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256, mask_zero=True)(encoder_inputs)
+    encoder_outputs, state_h, state_c = tf.keras.layers.LSTM(128, return_state=True)(encoder_embedding)
+    encoder_states = [state_h, state_c]
 
-decoder_inputs = tf.keras.layers.Input(shape=(None,))
-decoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256, mask_zero=True)(decoder_inputs)
-decoder_lstm = tf.keras.layers.LSTM(128, return_state=True, return_sequences=True)
-decoder_outputs, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
-decoder_dense = tf.keras.layers.Dense(VOCAB_SIZE, activation=tf.keras.activations.softmax)
-output = decoder_dense(decoder_outputs)
+    decoder_inputs = tf.keras.layers.Input(shape=(None,))
+    decoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256, mask_zero=True)(decoder_inputs)
+    decoder_lstm = tf.keras.layers.LSTM(128, return_state=True, return_sequences=True)
+    decoder_outputs, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
+    decoder_dense = tf.keras.layers.Dense(VOCAB_SIZE, activation=tf.keras.activations.softmax)
+    output = decoder_dense(decoder_outputs)
 
-model = tf.keras.models.Model([encoder_inputs, decoder_inputs], output)
-model.compile(optimizer=tf.keras.optimizers.RMSprop(), loss='categorical_crossentropy')
+    model = tf.keras.models.Model([encoder_inputs, decoder_inputs], output)
+    model.compile(optimizer=tf.keras.optimizers.RMSprop(), loss='categorical_crossentropy')
 
-model.summary()
+    model.summary()
 
-# TRAIN MODEL
-model.fit([questions, answers], decoder_target_data, batch_size=250, epochs=10)
-model.save('model.h5')
+    # TRAIN MODEL
+    model.fit([questions, answers], decoder_target_data, batch_size=2, epochs=10)
+    model.save('model.h5')
 
 
 def evaluate(sentence):
     sentence = preprocess_sentence(sentence)
+    with tf.device(device):
+        sentence = tf.expand_dims(
+            START_TOKEN + tokenizer.encode(sentence) + END_TOKEN, axis=0)
 
-    sentence = tf.expand_dims(
-        START_TOKEN + tokenizer.encode(sentence) + END_TOKEN, axis=0)
+        output = tf.expand_dims(START_TOKEN, 0)
 
-    output = tf.expand_dims(START_TOKEN, 0)
+        for i in range(MAX_LENGTH):
+            predictions = model(inputs=[sentence, output], training=False)
 
-    for i in range(MAX_LENGTH):
-        predictions = model(inputs=[sentence, output], training=False)
+            # select the last word from the seq_len dimension
+            predictions = predictions[:, -1:, :]
+            predicted_id = tf.cast(tf.argmax(predictions, axis=-1), tf.int32)
 
-        # select the last word from the seq_len dimension
-        predictions = predictions[:, -1:, :]
-        predicted_id = tf.cast(tf.argmax(predictions, axis=-1), tf.int32)
+            # return the result if the predicted_id is equal to the end token
+            if tf.equal(predicted_id, END_TOKEN[0]):
+                break
 
-        # return the result if the predicted_id is equal to the end token
-        if tf.equal(predicted_id, END_TOKEN[0]):
-            break
+            # concatenated the predicted_id to the output which is given to the decoder
+            # as its input.
+            output = tf.concat([output, predicted_id], axis=-1)
 
-        # concatenated the predicted_id to the output which is given to the decoder
-        # as its input.
-        output = tf.concat([output, predicted_id], axis=-1)
-
-    return tf.squeeze(output, axis=0)
+        return tf.squeeze(output, axis=0)
 
 
 def predict(sentence):
