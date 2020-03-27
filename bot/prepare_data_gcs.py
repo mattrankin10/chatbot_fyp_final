@@ -26,6 +26,10 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
 
 
 def which_blob_to_download(blobs_list):
+    os.chdir('blobs/')
+    mkdir('train/')
+    mkdir('test/')
+    os.chdir("..")
     for blob in blobs_list:
         blob_name = str(blob.name)
         if blob_name.startswith('reddit/20200307/train'):
@@ -93,13 +97,10 @@ def read_json_and_write_prepared_data(directory, fromFile, toFile):
 
 def prepare():
     mkdir('blobs')
-    os.chdir('blobs/')
-    mkdir('train/')
-    mkdir('test/')
-    os.chdir('..')
-
     # download objects from gcs
-    which_blob_to_download(blobs)
+    dir = os.listdir("blobs")
+    if len(dir) == 0:
+        which_blob_to_download(blobs)
     # clean files
     clean_file("test.from")
     clean_file("test.to")
