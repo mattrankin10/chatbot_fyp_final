@@ -5,6 +5,7 @@ from glob import glob
 from google.cloud import storage
 import os
 import errno
+import pathlib
 
 original_cwd = os.getcwd()
 
@@ -13,22 +14,24 @@ client = storage.Client()
 bucket = client.get_bucket(bucket_name)
 blobs = client.list_blobs(bucket_name)
 
-blob_reduced = ["reddit/20200307/train-00020-of-01000.json", "reddit/20200307/train-00021-of-01000.json", "reddit/20200307/test-00020-of-01000.json", "reddit/20200307/test-00021-of-01000.json"]
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
     """Downloads a blob from the bucket."""
     # bucket_name = "your-bucket-name"
     # source_blob_name = "storage-object-name"
     # destination_file_name = "local/path/to/file"
-
     blob = bucket.blob(source_blob_name)
     blob.download_to_filename(destination_file_name)
+    print("Blob {} downloaded to {}.".format(source_blob_name, destination_file_name))
 
-    print(
-        "Blob {} downloaded to {}.".format(
-            source_blob_name, destination_file_name
-        )
-    )
+
+def which_blob_to_download(blobs_list):
+    for blob in blobs_list:
+        blob_name = str(blob.name)
+        if blob_name.startswith('reddit/20200307/train'):
+            download_blob(bucket_name, blob_name, 'blobs/train/' + blob_name.partition('reddit/20200307/')[2])
+        elif blob_name.startswith('reddit/20200307/test'):
+            download_blob(bucket_name, blob_name, 'blobs/test/' + blob_name.partition('reddit/20200307/')[2])
 
 
 def mkdir(path):
@@ -39,12 +42,53 @@ def mkdir(path):
             raise
 
 
-def clean_file(file):
-    return file.truncate(0)
+def clean_file(fileName):
+    with open(fileName, 'a', encoding='utf8') as f:
+        f.truncate(0)
 
 
 def clean_line(line):
     return line.replace("\n", "").replace("\r", "")
+
+
+def append_to_file(fromFile, toFile, data):
+    with open(fromFile, 'a', encoding='utf8') as f:
+        with open(toFile, 'a', encoding='utf8') as t:
+            count = 0
+            for thread in data:
+                count += 1
+                context = clean_line(thread["context"]) + '\n'
+                response = clean_line(thread["response"]) + '\n'
+                f.write(context)
+                t.write(response)
+
+    # close after each time we write to the file to make sure we don't run out of memory
+    f.close()
+    t.close()
+
+
+def read_json_and_write_prepared_data(directory, fromFile, toFile):
+    # append test and train arrays with threads
+    count = 0
+    for path in pathlib.Path(directory).iterdir():
+        print("Doing " + path.stem)
+        if path.is_file():
+            current_file = open(path, "r")
+
+            # create JSON object from data
+            data = []
+            line_count = 0
+            for line in current_file:
+                line_count += 1
+                try:
+                    thread = json.loads(line)
+                    if thread["context"] and thread["response"]:
+                        data.append(thread)
+                except:
+                    print("Error reading json on line " + str(line_count))
+
+            append_to_file(fromFile, toFile, data)
+            count += 1
 
 
 def prepare():
@@ -52,62 +96,18 @@ def prepare():
     os.chdir('blobs/')
     mkdir('train/')
     mkdir('test/')
-
-    # create JSON object from data
-    data_test = []
-    data_train = []
+    os.chdir('..')
 
     # download objects from gcs
-    for blob in blobs:
-        blob_name = str(blob.name)
-        print(blob_name)
-        if blob_name.startswith('reddit/20200307/train'):
-            download_blob(bucket_name, blob_name, 'train/' + blob_name.partition('reddit/20200307/')[2])
-        elif blob_name.startswith('reddit/20200307/test'):
-            download_blob(bucket_name, blob_name, 'test/' + blob_name.partition('reddit/20200307/')[2])
+    which_blob_to_download(blobs)
+    # clean files
+    clean_file("test.from")
+    clean_file("test.to")
+    clean_file("train.from")
+    clean_file("train.to")
 
-    # append test and train arrays with threads
-    os.chdir(os.getcwd() + "/train")
-    for file in os.listdir(os.getcwd()):
-        with open(file) as f:
-            for line in f:
-                thread = json.loads(line)
-                if thread["context"] and thread["response"]:
-                    data_train.append(thread)
-
-    os.chdir('..')
-    os.chdir(os.getcwd() + "/test")
-    for file in os.listdir(os.getcwd()):
-        with open(file) as f:
-            for line in f:
-                thread = json.loads(line)
-                if thread["context"] and thread["response"]:
-                    data_test.append(thread)
-
-    os.chdir('../..')
-
-    # create question and answer files
-    with open("test.from", 'a', encoding='utf8') as f:
-        clean_file(f)
-        for thread in data_test:
-            f.write(clean_line(thread["context"]) + '\n')
-
-    with open("test.to", 'a', encoding='utf8') as f:
-        clean_file(f)
-        for thread in data_test:
-            f.write(clean_line(thread["response"]) + '\n')
-
-    with open("train.from", 'a', encoding='utf8') as f:
-        clean_file(f)
-        for thread in data_train:
-            f.write(clean_line(thread["context"]) + '\n')
-
-    with open("train.to", 'a', encoding='utf8') as f:
-        clean_file(f)
-        for thread in data_train:
-            f.write(clean_line(thread["response"]) + '\n')
-
-    os.chdir(original_cwd)
+    read_json_and_write_prepared_data("blobs/train", "train.from", "train.to")
+    read_json_and_write_prepared_data("blobs/test", "test.from", "test.to")
 
 
 prepare()
