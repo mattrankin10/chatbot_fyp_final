@@ -3,7 +3,7 @@ from keras.preprocessing import sequence
 import tensorflow_datasets as tfds
 from tensorflow import TensorShape
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
-from tensorflow.keras import layers , activations , models , preprocessing , utils
+from tensorflow.keras import layers, activations, models, preprocessing, utils
 from tensorflow.keras.layers import Input, GRU, Dense, Concatenate, TimeDistributed, Embedding, LSTM
 from keras import layers, activations, models, preprocessing, utils
 from keras.preprocessing.sequence import pad_sequences
@@ -31,19 +31,27 @@ def preprocess_sentence(sentence):
     return sentence
 
 
+MAX_SAMPLES = 200000
+
 
 def load_conversations():
     inputs = []
     outputs = []
     with open("train.from", 'r', encoding='utf-8') as f:
         lines = f.readlines()
-    for line in lines:
-        inputs.append(clean_line(line))
+        count_input = 0
+        for line in lines:
+            if count_input <= MAX_SAMPLES:
+                inputs.append(clean_line(line))
+                count_input += 1
 
     with open("train.to", 'r', encoding='utf-8') as f:
         lines = f.readlines()
-    for line in lines:
-        outputs.append(clean_line(line))
+        count_output = 0
+        for line in lines:
+            if count_output <= MAX_SAMPLES:
+                outputs.append(clean_line(line))
+                count_output += 1
 
     return inputs, outputs
 
@@ -106,19 +114,19 @@ decoder_target_data = np.array(onehot_a_lines)
 print('Decoder target data shape -> {}'.format(decoder_target_data.shape))
 
 # model
-encoder_inputs = tf.keras.layers.Input(shape=( None , ))
-encoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256 , mask_zero=True ) (encoder_inputs)
-encoder_outputs , state_h , state_c = tf.keras.layers.LSTM( 128 , return_state=True  )( encoder_embedding )
-encoder_states = [ state_h , state_c ]
+encoder_inputs = tf.keras.layers.Input(shape=(None,))
+encoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256, mask_zero=True)(encoder_inputs)
+encoder_outputs, state_h, state_c = tf.keras.layers.LSTM(128, return_state=True)(encoder_embedding)
+encoder_states = [state_h, state_c]
 
-decoder_inputs = tf.keras.layers.Input(shape=( None ,  ))
-decoder_embedding = tf.keras.layers.Embedding( VOCAB_SIZE, 256 , mask_zero=True) (decoder_inputs)
-decoder_lstm = tf.keras.layers.LSTM( 128 , return_state=True , return_sequences=True)
-decoder_outputs , _ , _ = decoder_lstm ( decoder_embedding , initial_state=encoder_states )
-decoder_dense = tf.keras.layers.Dense( VOCAB_SIZE , activation=tf.keras.activations.softmax )
-output = decoder_dense ( decoder_outputs )
+decoder_inputs = tf.keras.layers.Input(shape=(None,))
+decoder_embedding = tf.keras.layers.Embedding(VOCAB_SIZE, 256, mask_zero=True)(decoder_inputs)
+decoder_lstm = tf.keras.layers.LSTM(128, return_state=True, return_sequences=True)
+decoder_outputs, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
+decoder_dense = tf.keras.layers.Dense(VOCAB_SIZE, activation=tf.keras.activations.softmax)
+output = decoder_dense(decoder_outputs)
 
-model = tf.keras.models.Model([encoder_inputs, decoder_inputs], output )
+model = tf.keras.models.Model([encoder_inputs, decoder_inputs], output)
 model.compile(optimizer=tf.keras.optimizers.RMSprop(), loss='categorical_crossentropy')
 
 model.summary()
