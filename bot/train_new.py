@@ -31,28 +31,28 @@ def preprocess_sentence(sentence):
     return sentence
 
 
-MAX_SAMPLES = 200000
+MAX_SAMPLES = 2000
 
 
 def load_conversations():
     inputs = []
     outputs = []
-    with open("train.from", 'r', encoding='utf-8') as f:
+    with open("test.from", 'r', encoding='utf-8') as f:
         lines = f.readlines()
         count_input = 0
         for line in lines:
-            if count_input <= MAX_SAMPLES:
+            if count_input < MAX_SAMPLES:
                 inputs.append(clean_line(line))
                 count_input += 1
 
-    with open("train.to", 'r', encoding='utf-8') as f:
+    with open("test.to", 'r', encoding='utf-8') as f:
         lines = f.readlines()
         count_output = 0
         for line in lines:
-            if count_output <= MAX_SAMPLES:
+            if count_output < MAX_SAMPLES:
                 outputs.append(clean_line(line))
                 count_output += 1
-
+    print("output count: " + str(count_output), "input count: " + str(count_input))
     return inputs, outputs
 
 
