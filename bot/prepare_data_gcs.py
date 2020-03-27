@@ -25,7 +25,7 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
     print("Blob {} downloaded to {}.".format(source_blob_name, destination_file_name))
 
 
-def which_blob_to_download(blobs_list):
+def download_blobs(blobs_list):
     os.chdir('blobs/')
     mkdir('train/')
     mkdir('test/')
@@ -100,7 +100,7 @@ def prepare():
     # download objects from gcs
     dir = os.listdir("blobs")
     if len(dir) == 0:
-        which_blob_to_download(blobs)
+        download_blobs(blobs)
     # clean files
     clean_file("test.from")
     clean_file("test.to")
