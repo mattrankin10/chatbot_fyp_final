@@ -1,12 +1,13 @@
 #!/bin/bash
 
-file=$1
-bucketname=$2
-if [[ -n "$file" ]]; then
-  if [[ -n "$bucketname" ]]; then
-    gsutil cp $file gs://$bucketname
-    echo "File uploaded to bucket"
-  fi
+bucketname=$1
+
+if [[ -n "$bucketname" ]]; then
+  gsutil cp train.from gs://$bucketname
+  gsutil cp train.to gs://$bucketname
+  gsutil cp test.from gs://$bucketname
+  gsutil cp test.to gs://$bucketname
+  echo "Files uploaded to bucket"
+fi
 else
     echo "argument error"
-fi

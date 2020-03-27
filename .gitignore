@@ -141,3 +141,14 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+
+# prepare date
+bot/test.from
+bot/test.to
+bot/train.from
+bot/train.to
+bot/blobs/
+bot/model.h5
+*.swp
+
+
