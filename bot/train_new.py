@@ -12,6 +12,8 @@ import re
 import numpy as np
 import tensorflow as tf
 import os
+# resolve printing tensorflow errors message
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 def clean_line(line):
@@ -174,7 +176,7 @@ def predict(sentence):
     return predicted_sentence
 
 
-sentence = 'I am not crazy, my mother had me tested, I promise'
+sentence = 'Hello there what is your name?'
 for _ in range(5):
     sentence = predict(sentence)
     print('')
