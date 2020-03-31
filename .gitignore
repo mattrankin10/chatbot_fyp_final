@@ -152,3 +152,8 @@ bot/model.h5
 *.swp
 
 
+# subtitles data
+opensubtitles/files_uploaded/*
+opensubtitles/lines/*
+opensubtitles/en.txt
+opensubtitles/en.txt.qz

@@ -1,20 +1,14 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-from keras.preprocessing import sequence
 import tensorflow_datasets as tfds
-from tensorflow import TensorShape
-from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
-from tensorflow.keras import layers, activations, models, preprocessing, utils
-from tensorflow.keras.layers import Input, GRU, Dense, Concatenate, TimeDistributed, Embedding, LSTM
-from keras import layers, activations, models, preprocessing, utils
+from keras import utils
 from keras.preprocessing.sequence import pad_sequences
-from keras.utils import plot_model
 import re
 import numpy as np
 import tensorflow as tf
 import os
+
 # resolve printing tensorflow errors message
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
 
 
 def clean_line(line):
@@ -37,7 +31,7 @@ def preprocess_sentence(sentence):
 MAX_SAMPLES = 2000
 
 
-device = 'gpu'
+device = 'cpu'
 
 def load_conversations():
     inputs = []

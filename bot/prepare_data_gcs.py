@@ -107,7 +107,7 @@ def prepare():
     clean_file("train.from")
     clean_file("train.to")
 
-    read_json_and_write_prepared_data("blobs/train", "train.from", "train.to")
+    read_json_and_write_prepared_data("blobs/train/", "train.from", "train.to")
     read_json_and_write_prepared_data("blobs/test", "test.from", "test.to")
 
 
