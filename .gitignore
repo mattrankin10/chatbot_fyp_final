@@ -157,3 +157,8 @@ opensubtitles/files_uploaded/*
 opensubtitles/lines/*
 opensubtitles/en.txt
 opensubtitles/en.txt.qz
+opensubtitles/test.from
+opensubtitles/test.to
+opensubtitles/train.from
+opensubtitles/train.to
+opensubtitles/blobs/

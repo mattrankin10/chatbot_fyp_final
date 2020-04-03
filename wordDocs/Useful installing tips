@@ -1,0 +1,64 @@
+ADVANCED AI W6
+
+UNSUPERVISED LEARNING
+= FROM DATA WITHOUT LABELS - learning some hidden characterstics of the dara without knowing anything in advance about the data.
+
+Unsupervised learning 
+    cheap no labels 
+	no error loss
+	discover new things about the dara that we dont know
+
+supervised learning 
+	expensive to label data
+	require definition - error losss
+	can do just as good as the labels 
+
+
+
+What is clustering?
+automatically detecting groups of datapoints
+
+example: 
+1- each point is a clister - n points=n clusters
+2- compite distances - matrix of nxn with n the no of points
+3- find shortest distance 
+4- recompute distance matrix with all points from the new cluster
+5- repeat from 3
+
+
+export IMAGE_FAMILY="tf-latest-gpu" 
+export ZONE="us-west1-b"
+export INSTANCE_NAME="chat-bot-trainer"
+gcloud compute instances create $INSTANCE_NAME --zone=$ZONE --image-family=$IMAGE_FAMILY --image-project=deeplearning-platform-release --maintenance-policy=TERMINATE --accelerator='type=nvidia-tesla-v100,count=1' --metadata='install-nvidia-driver=True'
+
+gcloud beta compute ssh --zone "us-central1-a" "chat-bot-trainer" --project "chatbotfyp-1"
+
+sudo gcloud compute config-ssh     (when moving instances)
+
+gcloud auth login  	
+
+gsutil cp gs://<bucket path to object> <save to file>
+
+requirements:
+sudo apt-get install python3-pip
+pip3 install:
+keras
+tensorflow=2.0.0a0
+tensorflow-datasets
+
+nmt chatbot: fix non-ASCII 
+top of prepare data + tokenizer: # -*- coding: utf-8 -*-
+
+uploading mutiple files to gcs gsutil cp -r <folder> <bucket location>
+
+gsutil cp translate.ckpt-5525.data-00000-of-00001 gs://amazonqavideogames/reddit/Models/corpus117k_batch64_vocab100k/
+
+
+open subtitles data:
+python3 opensubtitles/create_data.py \
+  --output_dir ${DATADIR?} \
+  --runner DataflowRunner \
+  --temp_location ${DATADIR?}/temp \
+  --staging_location ${DATADIR?}/staging \
+  --project ${PROJECT?} \
+  --dataset_format JSON
