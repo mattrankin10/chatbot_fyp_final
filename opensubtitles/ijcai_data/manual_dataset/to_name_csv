@@ -1,0 +1,601 @@
+text,label
+ When you first met what was your name?,positive name
+Who are you,positive name
+What is your name,positive name
+who are you,positive name
+How may I address you,positive name
+What shall i call you,positive name
+What is your real name?,positive name
+My name is Wang Xiaoming how about you,positive name
+Are you little love,positive name
+Tell me your name,positive name
+Are you Sogou Wangzai,positive name
+What's your name,positive name
+Dare to ask Your Excellency,positive name
+Talk about your name,positive name
+Tell me your name,positive name
+I guess your name is Xiaoming right?,positive name
+who are you?,positive name
+I don't know what your name is,positive name
+you are?,positive name
+Who is your last name?,positive name
+Please leave your name,positive name
+Excuse me,positive name
+Can you tell me your chinese name,positive name
+Do you know your name,positive name
+I want to know your name,positive name
+What is your name? Tell me chant,positive name
+What is your name,positive name
+Is your name Sogou Wangzi?,positive name
+Can you tell me what your name is?,positive name
+What is your name,positive name
+What's your name,positive name
+Tell me your name,positive name
+What is your chinese name,positive name
+Tell me what your name is,positive name
+Is Wang Xiaoming you?,positive name
+Is your name Wang Xiaoming,positive name
+Are you the famous Wang Xiaoming?,positive name
+I heard your name is Wang Xiaoming?,positive name
+I forgot your name again you say it again,positive name
+Tell me about your honorary name,positive name
+Can you tell me your name,positive name
+I don't know what your name is can you tell me,positive name
+I don't know you who are you?,positive name
+Can you say your name again,positive name
+I didn't remember your name tell me again,positive name
+Hello what should i call you,positive name
+Your name is so hard to remember you say it again,positive name
+My mom said you are Wang Xiaoming?,positive name
+I want to find Wang Xiaoming are you him?,positive name
+Say your name quickly,positive name
+Are you a boy or a girl?,negative name
+I guess you are female,negative name
+Your father's mother,negative name
+You are female or male,negative name
+You don't look like a man,negative name
+Listening to your voice feels like a girl,negative name
+Are you man or woman?,negative name
+What is your gender,negative name
+Are you handsome or beautiful,negative name
+I am a girl how about you,negative name
+Can you tell me you are a man or a woman,negative name
+I don't know if you are a man or a woman,negative name
+You are so cute you must be a boy,negative name
+I feel like you should not be a woman,negative name
+Are you a little girl,negative name
+I am a male are you like me?,negative name
+You must be a woman,negative name
+Are you not a boy?,negative name
+Can you tell me your sex,negative name
+Are you a boy or a girl,negative name
+Do you know your gender,negative name
+I want to know your gender,negative name
+Are you a pretty girl,negative name
+You must be a cute girl,negative name
+Can you tell me your sex,negative name
+You are female am I right,negative name
+I think your gender is male,negative name
+I like men are you,negative name
+Tell your gender quickly,negative name
+Can you tell me if you are male or female,negative name
+State your gender,negative name
+I forgot your male and female,negative name
+Men and women what are you,negative name
+I am a woman and so are you?,negative name
+I heard you are a girl,negative name
+You say your sex again,negative name
+I don't know your gender can you tell me,negative name
+I didn't remember your gender tell me again,negative name
+Tell me your gender,negative name
+I can't see your gender tell me chant,negative name
+Tell me your sex secretly,negative name
+Are you gender male?,negative name
+You are a woman,negative name
+Is your gender secret? tell me,negative name
+Are you male or female?,negative name
+Are you a big beauty,negative name
+Are you a teenager or a girl,negative name
+Quickly report your gender,negative name
+Say you are male and female,negative name
+I am looking for a girl are you,negative name
+Wang Zi how old are you this year?,negative name
+I am 20 this year how about you,negative name
+You haven't said how old you are,negative name
+How old are you?,negative name
+Please tell your sister your real age frankly,negative name
+Are you under 18?,negative name
+Are you Guigeng?,negative name
+Your longevity?,negative name
+Talk about your age,negative name
+I heard you are already 30?,negative name
+how old are you,negative name
+How old are you?,negative name
+I guess you are 80 years old,negative name
+I don't know how old you are,negative name
+I am just 8 years old are you like me?,negative name
+What is your age,negative name
+I think you are 3 years old,negative name
+Children how old are you?,negative name
+Tell me how old you are,negative name
+How old is the girl Fang Ling?,negative name
+May I ask Gui Geng geometry?,negative name
+Can you tell me your age,negative name
+how old are you,negative name
+Do you know your age,negative name
+I want to know your age,negative name
+Can you tell me your age,negative name
+Tell me how old you are,negative name
+Feel you are less than one year old,negative name
+Are you 3 years old?,negative name
+Say how old are you,negative name
+It is said that you are 8 years old like me?,negative name
+Do you have 15 this year?,negative name
+Report your age,negative name
+Tell me your age,negative name
+Can you tell me your age?,negative name
+I need to know your age,negative name
+I need to find a 6 year old child are you?,negative name
+Almost how old are you,negative name
+Are you half a year old,negative name
+Are you in your early 20s?,negative name
+I do n’t know your age can you tell me,negative name
+How old are you,negative name
+I forgot your age again how much is it,negative name
+Are you 18 years old,negative name
+Can you say your age again,negative name
+Happy birthday how old are you,negative name
+Is your age a secret tell me,negative name
+Do n’t hide your age just say,negative name
+I am 10 years old are you too?,negative name
+I remember you were 8 years old?,negative name
+Which city are you in?,negative name
+Where do you live,negative name
+where do you live,negative name
+Which city is your home in?,negative name
+I live in Nanjing how about you,negative name
+I am in Tianjin where are you,negative name
+Is your home in shanghai,negative name
+Can you tell me where you live,negative name
+Are you from Beijing?,negative name
+where are you from,negative name
+Where are you from,negative name
+I guess you are from Shanghai,negative name
+Do you know where you live,negative name
+I don't know where you live yet,negative name
+Tell me where do you live,negative name
+Are you from Guangzhou or Shanghai,negative name
+Where is your home,negative name
+I want to go to Beijing are you there,negative name
+Which city are you from,negative name
+What are you,negative name
+Are you in the capital,negative name
+I want to know where you live,negative name
+Can you tell me your city,negative name
+You should be in the capital,negative name
+Tell me which city you are in,negative name
+Where are you from,negative name
+Are you in Tianjin?,negative name
+Can you tell me which city you are in,negative name
+Are you from Shanghai?,negative name
+Where is your hometown,negative name
+Where were you born,negative name
+Where are you from,negative name
+Where are you from?,negative name
+What is your hometown?,negative name
+Talk about your birthplace,negative name
+My hometown is Tianjin so are you?,negative name
+Which city were you born in,negative name
+Are you a Modu or an Emperor,negative name
+Where is the man from the Northeast?,negative name
+Can you tell me your hometown?,negative name
+I want to find a Shanghainese are you?,negative name
+Are you from a beautiful capital,negative name
+I heard that your hometown is also Tianjin?,negative name
+Tell me your hometown chant,negative name
+I remember you were in Shanghai,negative name
+Is Tianjin your hometown?,negative name
+What is your birthplace?,negative name
+Were you born in shanghai,negative name
+Talk about where you were born,negative name
+Are you not from Tianjin?,negative name
+Wang Zi you are fat again how much is it?,negative name
+How heavy are you,negative name
+What is your weight?,negative name
+Tell me how much are you,negative name
+Do you have 1 kg,negative name
+How many kilograms do you have,negative name
+Are you 10 pounds,negative name
+You should have 20 kg,negative name
+I am ninety pounds how about you,negative name
+I guess you have 100 pounds,negative name
+How many kilograms are you,negative name
+How many grams are you,negative name
+Are you already 100 pounds,negative name
+I don't know your weight yet,negative name
+Do you know how heavy you are,negative name
+You should be 10 pounds,negative name
+I feel you are about 50 kg,negative name
+I am 80 pounds are you like me?,negative name
+Can you tell me about your weight,negative name
+I want to know your weight,negative name
+I ’m 50kg how much are you,negative name
+How many pounds do you have,negative name
+Can you reveal your weight,negative name
+Talk about your weight,negative name
+Can you tell me your weight,negative name
+Is your weight 30kg?,negative name
+Tell me your weight,negative name
+Tell me your weight,negative name
+How many pounds are you coming,negative name
+Say you're overweight,negative name
+Are you 80 kg like me?,negative name
+I am 50 kg so are you?,negative name
+What is your weight,negative name
+Report your weight,negative name
+Tell your weight,negative name
+Don't hide your weight just say,negative name
+Are you 90 pounds or 100 pounds,negative name
+I forgot your weight how much is it,negative name
+I heard you are 200 pounds?,negative name
+What is your weight?,negative name
+How heavy are you,negative name
+Is your weight a secret tell me,negative name
+I remember you 50 kg,negative name
+Quietly tell me your weight,negative name
+Can talk about your weight,negative name
+I want to find someone about 100 pounds are you,negative name
+You say your weight again,negative name
+You should be less than 50 pounds right?,negative name
+You must have more than 50 pounds right?,negative name
+Your body weighs a few kilograms,negative name
+Do you know what constellation you are?,negative name
+Are you Gemini,negative name
+My Aries how about you,negative name
+What is your zodiac sign?,negative name
+Can you tell me your constellation,negative name
+What kind of constellation are you,negative name
+What is your seat?,negative name
+Do you know your constellation?,negative name
+I like people in Aquarius are you?,negative name
+Tell me about your constellation,negative name
+Tell me your constellation,negative name
+I don't know your sign yet,negative name
+Say what you are,negative name
+I guess you are Scorpio,negative name
+Aries Aquarius Gemini which one are you?,negative name
+Leo is the best match for me are you,negative name
+I want to find a Pisces do you?,negative name
+Are you really a shooter?,negative name
+You must be virgo,negative name
+Twelve constellations what are you?,negative name
+I want to know your constellation,negative name
+What constellation are you,negative name
+I feel like you are Pisces,negative name
+Are you Pisces?,negative name
+Can you tell which constellation you are,negative name
+What is your constellation,negative name
+What are you here for,negative name
+My Scorpio are you too?,negative name
+Tell me your sign,negative name
+I forgot your sign what is it?,negative name
+Can you reveal your constellation,negative name
+Are you a lion or an aries,negative name
+Are you also a Cancer?,negative name
+Is it Capricorn to see your birthday?,negative name
+Are you Scorpio?,negative name
+Who are you,negative name
+I heard about your water bottle?,negative name
+What constellation does your birthday belong to?,negative name
+What constellation does your birthday correspond to?,negative name
+Report your constellation,negative name
+Which one of the twelve constellations do you belong to?,negative name
+Can you name your constellation?,negative name
+What is your sign?,negative name
+Leave your constellation,negative name
+I need to know your sign,negative name
+What are you talking about?,negative name
+I feel like you are Taurus?,negative name
+Tell me what is your seat,negative name
+I remember you are Capricorn?,negative name
+Is your shooter right?,negative name
+Do you know my name?,negative name
+Do you know who I am,negative name
+Who are you talking about,negative name
+What is your dad's name,negative name
+Do you like your name,negative name
+What do you want to name your son,negative name
+What is your sister's real name?,negative name
+Who gave you your name,negative name
+Do you want to change the name,negative name
+Do you remember my name,negative name
+Guess what that person's name is,negative name
+What is your mother's name,negative name
+What does your name mean,negative name
+Have you seen any strange names,negative name
+Give my cat a name,negative name
+Your name is not good,negative name
+Does anyone have the same name as you?,negative name
+What do you think about your name,negative name
+Why are you called Sogou Wang Zi,negative name
+What do you think of my name,negative name
+What is the name of the restaurant you went to?,negative name
+May I ask your girlfriend's name,negative name
+Does the name matter,negative name
+Recommend me an english name,negative name
+You tell me his name,negative name
+What is your pet's name? Tell me chant,negative name
+What is my name,negative name
+Is that person's name Wang Xiaoming?,negative name
+What is your father's name?,negative name
+What is your husband's name,negative name
+What's your brother's name?,negative name
+Tell me your mother's name,negative name
+What is your friend's Chinese name,negative name
+Tell me what your wife's name is,negative name
+Is Wang Xiaoming your brother?,negative name
+Is your brother's name Wang Xiaoming,negative name
+Is he the famous Wang Xiaoming?,negative name
+I heard that his name is Wang Xiaoming?,negative name
+I forgot what my name is do you know,negative name
+Tell me what my name is,negative name
+Do you know his name,negative name
+I don't know what your sister's name is can you tell me,negative name
+Is the movie "Your Name" beautiful?,negative name
+Do you think my name is easy to remember,negative name
+Do you remember my name,negative name
+What should you call me,negative name
+Am I Wang Xiaoming,negative name
+Did you forget my Chinese name,negative name
+My name has a few words,negative name
+Is my name awesome,negative name
+Does any girl like you?,negative name
+Am i female,negative name
+Do you like men or women,negative name
+Do you want to be a man or a woman in your next life?,negative name
+Do you want a boy or a girl,negative name
+See if I am a handsome guy,negative name
+Is it good to have a boy or a girl,negative name
+Do you want to be a girl,negative name
+What kind of men are popular,negative name
+Why do men find a wife,negative name
+What kind of man do you want to be,negative name
+What kind of girl do you like,negative name
+You see that man is male or female,negative name
+Do you know my sex,negative name
+Guess I am a handsome guy or a beautiful girl,negative name
+Why do so many men favor women,negative name
+Do you think my dog is male and female,negative name
+Do you have many girls in school?,negative name
+Do you have a boyfriend,negative name
+Which female singer do you like,negative name
+Do you have more female friends or more male friends?,negative name
+I'll be your girlfriend,negative name
+How many women are in your company,negative name
+Why is the difference between men and women so big,negative name
+This bird is male and female,negative name
+Can you tell me your favorite actor,negative name
+Do you think i am a man or a woman,negative name
+Guess my gender,negative name
+Do you remember me being a man or a woman,negative name
+Am i a man or a woman,negative name
+Your classmate is male or female,negative name
+Is your friend a beauty,negative name
+Did you forget my gender?,negative name
+I'm female did you forget,negative name
+Is this a male cat or a female cat,negative name
+Is this school a boys' school,negative name
+Does this position recruit women,negative name
+Do you think gender is important,negative name
+Have you been sexist,negative name
+Are you considered to have missed your gender,negative name
+Do you want to change your gender,negative name
+Do you support equality between men and women,negative name
+Do you know the gender of fish,negative name
+Is love related to gender,negative name
+Do you think he looks like a woman,negative name
+Am i your goddess,negative name
+How many girlfriends have you had,negative name
+Is this job suitable for boys,negative name
+Is your boyfriend handsome,negative name
+Are there more boys or girls in your class?,negative name
+How old is your sister this year?,negative name
+guess how old I am,negative name
+Is your mother about the same age as me,negative name
+Is your dad almost 50?,negative name
+Am I always 18 years old?,negative name
+How old is this man you are crazy about?,negative name
+How old do you think you can live,negative name
+I was in elementary school at the age of 6 how about you?,negative name
+How old did you learn to speak?,negative name
+Do you think he looks like 15 years old,negative name
+How old is your son,negative name
+Do you know how old i am,negative name
+How old is the child to study abroad?,negative name
+How old are your girlfriends,negative name
+Is your IQ 3 years old?,negative name
+Will you grow wrinkles when you are older,negative name
+Is this book suitable for young children,negative name
+What do you take away by age?,negative name
+What is your psychological age,negative name
+How old do you want to get married,negative name
+How old are your kindergartens,negative name
+Will you consider her age when looking for a wife,negative name
+Can a 16 year old go to work,negative name
+Dare to ask Lingzun Gaoshou?,negative name
+How big is your family,negative name
+I am 40 years old is it very old,negative name
+How old is your dog this year,negative name
+How old is your sister?,negative name
+Do you know my age,negative name
+Do you remember how old i am,negative name
+Do you think i'm older,negative name
+Do you know how old i am,negative name
+Can 2 year old children get free tickets,negative name
+How angry are you,negative name
+How old are you?,negative name
+Is there an age limit for this movie,negative name
+Is there an age requirement for this job,negative name
+How old does your mom retire?,negative name
+Do you know the age range of pediatrics?,negative name
+Is it hard to find a boyfriend when you are older,negative name
+Tell me your friend's age,negative name
+Do you know how old they are,negative name
+What age group is this toy suitable for?,negative name
+Do you say his age is real,negative name
+How big is your stomach,negative name
+How big are you wearing,negative name
+How big are your feet,negative name
+How old do you think you are?,negative name
+Is your sister 2 years younger than you,negative name
+Older should I go on a blind date?,negative name
+What is the largest city in China?,negative name
+Where does your mother live,negative name
+Do you like to live in the city or in the country,negative name
+Which province is Nanjing,negative name
+I want to live in a big city what do you think,negative name
+Guess where i live,negative name
+You said where do i live,negative name
+Your home is big,negative name
+Is there heating in the place where you live,negative name
+Do you like the city you live in,negative name
+Do you want to live somewhere else,negative name
+Do your parents live in the same city as you,negative name
+Why do you live in beijing,negative name
+Are you lonely in beijing,negative name
+Do you live in a building or a bungalow,negative name
+What is the economic level of the city you live in?,negative name
+House prices are high where you live,negative name
+What kind of city is Beijing?,negative name
+Do you know where i am,negative name
+What is fun in your city,negative name
+Do you want to go to Nanjing,negative name
+Which city has more beauties,negative name
+How is the weather in your city,negative name
+What is the population of your city,negative name
+Guess which city i am in,negative name
+Do you remember where my hometown is,negative name
+Where do you feel i am,negative name
+What city am i in,negative name
+Is your sister from Shanghai?,negative name
+Where is your father's hometown?,negative name
+Where was your mother born,negative name
+Do you know the name of my city,negative name
+People who know where I am,negative name
+Guess where is my hometown,negative name
+You come to Shanghai to play with me,negative name
+My mother asked me to go back to my hometown,negative name
+Where do you think Shanghai and Hong Kong are more fun,negative name
+How is the traffic in your city,negative name
+What are the customs in your hometown,negative name
+I'll go back home tomorrow how about you,negative name
+Did you buy a ticket back to your hometown?,negative name
+Do you know where i was born,negative name
+Which city do you think is the most beautiful,negative name
+Have you seen "City Hunter",negative name
+Is it easy to find a job in a big city,negative name
+Are you professional in urban planning,negative name
+Where is the toilet,negative name
+Where do you say he is,negative name
+Where are you stupid?,negative name
+Where did you learn this sentence,negative name
+Am I getting fat again?,negative name
+Guess I weigh,negative name
+What is your ideal weight,negative name
+Do you know my weight,negative name
+How can I lose weight,negative name
+How much is this watermelon,negative name
+Is your bag heavy?,negative name
+Lose weight for one month without changing weight,negative name
+What if i'm too thin,negative name
+How many cats do you have?,negative name
+See if I am fat or not,negative name
+Can you lift multiple things,negative name
+Do you know how many kilograms he has,negative name
+Is your brother lighter than you,negative name
+Do you want to get thinner,negative name
+How much weight this table can bear,negative name
+Do you know how much I lost this month,negative name
+How many pounds of meat did you buy?,negative name
+You actually said I was fat,negative name
+How do you keep your weight,negative name
+Isn't it too good to be underweight,negative name
+Is your dad the same weight as you,negative name
+Do you know the weight of your luggage,negative name
+Do you want to lose your weight,negative name
+How much is your sister,negative name
+How much do you think I have,negative name
+Do you know how much a pound is equal to,negative name
+Do you think i'm like a 100 jin person,negative name
+I need to weigh your luggage,negative name
+How many pounds of apples do you want?,negative name
+How many pounds do you think are fat?,negative name
+Guess how much I got fat,negative name
+How much does your wife weigh,negative name
+Does your friend have 90 pounds,negative name
+Do you think I can lose a few pounds this time,negative name
+You want to make a few pounds of dumplings,negative name
+How much is this apple per pound,negative name
+Do you have a weight scale,negative name
+What to do if you lose weight repeatedly,negative name
+You also bought 5 catties of rice?,negative name
+How heavy is this bag,negative name
+Help me see how much I am,negative name
+Is there a weight limit for sending packages?,negative name
+How heavy is this dumbbell?,negative name
+Can you help me weigh this package,negative name
+Is the weight displayed on this scale accurate?,negative name
+Do you know any heavyweight film festivals?,negative name
+How much do you think I have to lose,negative name
+How many pounds does your dog grow,negative name
+How much is this bag of snacks,negative name
+Do you know which constellation girl is the most beautiful?,negative name
+What kind of constellation do you like,negative name
+Which constellation do you think is the best,negative name
+Am I Sagittarius?,negative name
+Guess what my wife is,negative name
+What is your mother's constellation?,negative name
+Is your girlfriend Pisces too?,negative name
+What do you think of Leo,negative name
+Aquarius and Pisces do not match,negative name
+What kind of constellation do you most want to be,negative name
+Do you believe in constellations,negative name
+Do you think the constellation is accurate,negative name
+Why don't you like virgo,negative name
+Which constellation matches you best,negative name
+Go find a Libra,negative name
+What kind of constellation do I look like,negative name
+What is said in the constellation book is not correct.,negative name
+Do you like to study constellations,negative name
+What constellation is the smartest,negative name
+Do you think I fit the character description of Pisces,negative name
+What constellation friends do you have,negative name
+What is your colleague,negative name
+Is Leo a leader?,negative name
+Is your dad a shooter?,negative name
+What constellation do you have the most friends,negative name
+Do you like people in Cancer,negative name
+Where is your brother?,negative name
+You know my constellation,negative name
+Tell me your sister's sign,negative name
+Have you forgotten my constellation?,negative name
+What do you think I am,negative name
+Can a constellation really determine a person's character?,negative name
+Do you dislike others talking about constellations,negative name
+Have you ever seen the Great Bear,negative name
+Have you ever heard of "Constellation Lovers",negative name
+Do you hate Virgo?,negative name
+What kind of constellation do you hate most?,negative name
+Guess I am Gemini or Pisces,negative name
+Do you know what is the ascending constellation,negative name
+Are you interested in zodiac sign,negative name
+What constellation girlfriend do you want to find,negative name
+It is said that today's lucky constellation is a water bottle?,negative name
+Do you know the luck of the constellations this year,negative name
+Is the constellation very unscientific,negative name
+Do you have a scorpio friend,negative name
+Is your constellation the same as you,negative name
+Do you have any book about constellation,negative name
+Have you seen the uncle's constellation Tucao,negative name
+Do you have many students in Libra,negative name
+What train do you plan to take,negative name

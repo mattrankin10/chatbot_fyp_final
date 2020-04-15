@@ -15,10 +15,10 @@ def plot_graphs(history, metric):
 
 
 dataset, info = tfds.load('imdb_reviews/subwords8k', with_info=True, as_supervised=True)
+print(dataset)
 train_dataset, test_dataset = dataset['train'], dataset['test']
 encoder = info.features['text'].encoder
 print('Vocabulary size: {}'.format(encoder.vocab_size))
-
 sample_string = 'Hello TensorFlow.'
 encoded_string = encoder.encode(sample_string)
 print('Encoded string is {}'.format(encoded_string))

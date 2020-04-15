@@ -1,0 +1,123 @@
+% Inspired by the template by Dave Stevens - https://github.com/davestevens/Loughborough-University-PhD-Thesis-Template/blob/master/thesis.tex
+% A4 paper size selected, default is 11pt font, to change to 12pt use [a4paper, 12pt] as option to documentclass
+\documentclass[a4paper]{report}
+
+% Some useful packages for including images, colored font, etc.
+\usepackage[dvips]{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{url}
+\usepackage{fancybox}
+
+% Choose your bibliography style
+%\bibliographystyle{}
+
+% Set margins in all document to 3.5cm as per guidelines for binding
+\usepackage[includeheadfoot,margin=3.5cm]{geometry}
+
+
+% Used to produce headers and footers
+%\usepackage{fancyhdr}
+%\pagestyle{fancyplain}
+
+% Used for removing title in bibliography sections
+\usepackage{titlesec}
+
+% Line spacing defined at 1 and a half.  It says 1.3 but its 1 and a half. Four double spacing use 1.6
+\linespread{1.3}
+
+% Setup headers and footers
+%\fancyhf{}
+%\lhead{\leftmark}
+% Center on all pages
+%\fancyhead[C]{---Draft---}
+% Page number placed on right side on odd pages and left side on even pages
+%\fancyfoot[RO, LE] {\thepage}
+
+
+\begin{document}
+
+% Title, Author, Abstract, Acknowledgement, Table of Content, etc....
+
+% Front Page begins
+
+\thispagestyle{empty}
+
+\fancypage{}{\fbox}
+
+%\thisfancyput{%
+\begin{center}
+
+%Substitute with the right information
+\Large{
+\hfill \begin{tabular}{l}
+Degree Name \\
+Project Module Code \\
+ID Number
+\end{tabular}
+}
+
+
+%\bigskip
+%\bigskip
+\vspace*{\fill}
+
+%replace by your Project title
+\Large{\textbf{PROJECT TITLE THAT COULD \\
+GO OVER THREE \\
+LINES}}
+
+\vspace*{\fill}
+
+by
+
+\vspace*{\fill}
+
+%Replace by your name
+
+Frederick C. Brown
+
+
+%Replace by your supervisor's name
+\vspace*{\fill}
+
+Supervisor: Dr. C. Hatter
+\vspace*{\fill}
+
+\underline{Department of Computer Science} \\
+\underline{Loughborough University}
+
+\vspace*{\fill}
+%Delete/Change as appropriate
+April/June 20xx
+
+\end{center}
+%}
+
+% Front Page ends
+
+\newpage
+
+%Reset so that next pages do not have a box around them
+\fancypage{}{}
+
+
+Begin main report ....
+
+% To keep everything neat you could include each chapter as a separate .tex file
+% Each contains a single chapter, they include all the settings defined in this .tex file
+% Allows easier moving around of chapters
+
+% Use \include{<path to .tex file>} to include documents
+% For example
+%\include{Chapter_1/Chapter_1}
+
+
+% Rename Bibliography to References
+\renewcommand\bibname{References}
+%\bibliography{<Path to .bib file>}
+
+% Include appendix section if needed
+%\include{Appendix/Appendix}
+
+\end{document}

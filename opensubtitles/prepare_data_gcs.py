@@ -14,6 +14,8 @@ client = storage.Client()
 bucket = client.get_bucket(bucket_name)
 blobs = client.list_blobs(bucket_name)
 
+# set max length sentence
+MAX_LENGTH = 40
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
     """Downloads a blob from the bucket."""
@@ -62,10 +64,26 @@ def append_to_file(fromFile, toFile, data):
             count = 0
             for thread in data:
                 count += 1
-                context = clean_line(thread["context"]) + '\n'
-                response = clean_line(thread["response"]) + '\n'
-                f.write(context)
-                t.write(response)
+                if "?" in thread["context"] and len(thread["context"]) <= MAX_LENGTH:
+                    context = clean_line(thread["context"]) + '\n'
+                    response = clean_line(thread["response"]) + '\n'
+                    f.write(context)
+                    t.write(response)
+
+                if "context/0" in thread and "?" in thread["context/0"] and len(thread["context/0"]) <= MAX_LENGTH:
+                    context = clean_line(thread["context/0"]) + '\n'
+                    response = clean_line(thread["context"]) + '\n'
+                    f.write(context)
+                    t.write(response)
+
+                for i in range(1,10):
+                    if "context/" + str(i) in thread \
+                            and "?" in thread["context/" + str(i)] \
+                            and len(thread["context/" + str(i)]) <= MAX_LENGTH:
+                        context = clean_line(thread["context/" + str(i)]) + '\n'
+                        response = clean_line(thread["context/" + str(i-1)]) + '\n'
+                        f.write(context)
+                        t.write(response)
 
     # close after each time we write to the file to make sure we don't run out of memory
     f.close()
@@ -103,13 +121,13 @@ def prepare():
     if len(dir) == 0:
         download_blobs(blobs)
     # clean files
-    clean_file("test.from")
-    clean_file("test.to")
-    clean_file("train.from")
-    clean_file("train.to")
+    clean_file("testquestions.from")
+    clean_file("testquestions.to")
+    clean_file("trainquestions.from")
+    clean_file("trainquestions.to")
 
-    read_json_and_write_prepared_data("blobs/train/", "train.from", "train.to")
-    read_json_and_write_prepared_data("blobs/test", "test.from", "test.to")
+    read_json_and_write_prepared_data("blobs/train/", "trainquestions.from", "trainquestions.to")
+    read_json_and_write_prepared_data("blobs/test", "testquestions.from", "testquestions.to")
 
 
 prepare()

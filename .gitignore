@@ -150,6 +150,7 @@ bot/train.to
 bot/blobs/
 bot/model.h5
 *.swp
+*.swo
 
 
 # subtitles data
@@ -162,3 +163,25 @@ opensubtitles/test.to
 opensubtitles/train.from
 opensubtitles/train.to
 opensubtitles/blobs/
+
+
+opensubtitles/ijcai_data/manual_dataset/py-translate/
+
+
+*/train_log/*
+*/nmt/*
+
+#data files
+*.csv
+*.from
+*.to
+*.post
+*.resp
+*.keys
+*.h5
+*.pickle
+
+
+opensub10milquestions-greedy-batch128-2layers-attention-epoch3-248556/
+opensub10milquestions-sample-1-batch128-8layers-gnmt/*
+

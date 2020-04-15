@@ -1,0 +1,18 @@
+Information:
+This dataset was created for the Paper 'Assigning Personality/Profile to a Chatting Machine for Coherent Conversation Generation', Qian et. al,. IJCAI 2018
+Please cite the paper if you want to use it :) 
+
+Description:
+1) Weibo Dataset: 
+The dataset contains 9,697,651 post-response pairs collected from Weibo, see '*.post' and '*.resp'. 10,000 pairs are usually used for validation to make early stop and others for training.
+
+2) Profile Dataset: 
+We extracted 76,930 pairs from Weibo Dataset for 6 profile keys ({name, gender, age, location, weight, constellation}) with regular expression patterns. The dataset is annotated by 13 annotators. Each pair is manually labeled to positive if a post is asking for a profile value and the response is a logic reaction to the post, or negative otherwise, see '*.keys' for more details.
+
+3) Manual Dataset:
+This dataset contains 600 posts written by 4 human curators, including 50 negative and 50 positive posts for each key, see 'test.post' and 'test.keys'. A positive post for a profile key (e.g., how old are you?) means that it should be responded by a profile value, while a negative post (e.g., how are you today?) should not. This dataset is used to test the performance on real conversation data rather than social media data.
+
+4) extend datasets:
+For another 4 keys ({hobby, idol, speciality, employer}), we extracted 16,332 post-response pairs from Weibo Dataset which is noisily mapped by regular expression patterns (without annotated by human), see 'extend_profile_dataset'.
+The test dataset for another 4 keys consisting of 400 posts, 50 positive and 50 negative human-written posts for each key, see 'extend_manual_dataset'.
+
