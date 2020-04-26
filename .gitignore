@@ -182,6 +182,7 @@ opensubtitles/ijcai_data/manual_dataset/py-translate/
 *.pickle
 
 
-opensub10milquestions-greedy-batch128-2layers-attention-epoch3-248556/
+opensub10milquestions-greedy-batch128-2layers-attention-epoch3-248556/classify-models
+opensub10milquestions-greedy-batch128-2layers-attention-epoch3-248556/model
+opensub10milquestions-greedy-batch128-2layers-attention-epoch3-248556/model-profile
 opensub10milquestions-sample-1-batch128-8layers-gnmt/*
-

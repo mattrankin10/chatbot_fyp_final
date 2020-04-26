@@ -1,6 +1,6 @@
 import csv
 
-labels = ['name', 'gender', 'age', 'location', 'constellation']
+labels = ['weight']
 
 
 def create_vector_csv(label, to_vector_csv):
@@ -14,9 +14,10 @@ def create_vector_csv(label, to_vector_csv):
                 while i < len(lines1):
                     if label in lines2[i] and 'positive' in lines2[i]:
                         csv_file.write(lines1[i].replace('\n', '').replace(',', '') + ',' + lines2[i])
-                    if label in lines2[i] and 'negative' in lines2[i]:
-                        csv_file.write(lines1[i].replace('\n', '').replace(',', '') + ',' + lines2[i])
+                    else:
+                        csv_file.write(lines1[i].replace('\n', '').replace(',', '') + ',' + 'negative ' + label + '\n')
                     i += 1
 
 
-create_vector_csv('name', 'name_only.csv')
+for label in labels:
+    create_vector_csv(label, label + '.csv')

@@ -6,7 +6,7 @@ from keras.layers import Dense, Embedding, AveragePooling1D, Flatten, Bidirectio
     Activation, Dropout
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.preprocessing.text import Tokenizer
-from keras import optimizers
+from keras import optimizers, regularizers
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import LabelEncoder
@@ -17,13 +17,15 @@ from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 import itertools
 import pickle
+from sklearn.model_selection import train_test_split
+
 
 from tensorflow.python.client import device_lib
 
 
 print(device_lib.list_local_devices())
 
-profiles = ['age', 'gender', 'location', 'constellation']
+profiles = ['hobby_new']
 
 for profile in profiles:
     dataframe = pandas.read_csv(profile + ".csv", header=None)
@@ -73,6 +75,10 @@ for profile in profiles:
     encoded_Y = encoder.transform(Y)
 
     print(encoded_Y)
+
+    # split train and test data
+    x_train, x_valid, y_train, y_valid = train_test_split(train_data, encoded_Y, test_size=0.33, shuffle=True)
+
     sgd = optimizers.SGD(lr=0.1)
 
     # baseline model
@@ -80,21 +86,21 @@ for profile in profiles:
     model = Sequential()
 
     model.add(Embedding(vocab_size, 64, input_length=max_sentence))
-    model.add(Dense(64, input_dim=train_data.shape[1]))
 
+    model.add(Dense(64, input_dim=train_data.shape[1]))
     model.add(BatchNormalization())
     model.add(Activation('relu'))
-    model.add(Dropout(0.4))
-
-    model.add(Dense(32, activation='relu'))
-    model.add(Dropout(0.4))
+    model.add(Dropout(0.8))
 
     model.add(Flatten())
+    model.add(Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01), bias_regularizer=regularizers.l2(0.01)))
+    model.add(Dropout(0.4))
+
     model.add(Dense(1, activation='sigmoid'))
 
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-    model.fit(train_data, encoded_Y , validation_split=0.2, verbose=True, epochs=20, batch_size=10)
+    model.fit(x_train, y_train , validation_data=(x_valid, y_valid), verbose=True, epochs=20, batch_size=16)
 
 
     print(model.summary())

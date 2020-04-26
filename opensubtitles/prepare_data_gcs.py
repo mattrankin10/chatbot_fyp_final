@@ -34,7 +34,6 @@ def download_blobs(blobs_list):
     os.chdir("..")
     for blob in blobs_list:
         blob_name = str(blob.name)
-        print(blob_name)
         if blob_name.startswith('opensubtitles/20200331/train'):
             download_blob(bucket_name, blob_name, 'blobs/train/' + blob_name.partition('opensubtitles/20200331/')[2])
         elif blob_name.startswith('opensubtitles/20200331/test'):
@@ -84,7 +83,6 @@ def append_to_file(fromFile, toFile, data):
                         response = clean_line(thread["context/" + str(i-1)]) + '\n'
                         f.write(context)
                         t.write(response)
-
     # close after each time we write to the file to make sure we don't run out of memory
     f.close()
     t.close()
@@ -96,8 +94,7 @@ def read_json_and_write_prepared_data(directory, fromFile, toFile):
     for path in pathlib.Path(directory).iterdir():
         print("Doing " + path.stem)
         if path.is_file():
-            current_file = open(path, "r")
-
+            with open(path, "r") as current_file:
             # create JSON object from data
             data = []
             line_count = 0
@@ -109,8 +106,8 @@ def read_json_and_write_prepared_data(directory, fromFile, toFile):
                         data.append(thread)
                 except:
                     print("Error reading json on line " + str(line_count))
-
             append_to_file(fromFile, toFile, data)
+            current_file.close()
             count += 1
 
 

@@ -1,4 +1,4 @@
-labels = ['name', 'gender', 'age', 'location', 'constellation']
+labels = ['weight']
 
 
 def create_profile_data(label, from_file, to_file):
@@ -48,4 +48,4 @@ def create_profile_test_data(label, from_file, to_file):
 
 for label in labels:
     #create_profile_data(label, label + '.from', label + '.to')
-    create_profile_test_data(label, label + '_tst.from', label + '_tst.to')
+    create_profile_data(label, label + '_positive.from', label + '_positive.to')

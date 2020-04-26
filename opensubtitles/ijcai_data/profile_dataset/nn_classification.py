@@ -1,3 +1,4 @@
+import Levenshtein
 import keras as keras
 import pandas
 import numpy as np
@@ -17,20 +18,33 @@ import itertools
 import pickle
 import tensorflow as tf
 
+profiles = ['hobby_new']
+for profile in profiles:
+    loaded_model = tf.keras.models.load_model(profile + '_classify_model.h5')
 
-loaded_model = tf.keras.models.load_model('text_classify_model.h5')
-with open('tokenizer.pickle', 'rb') as handle:
-    loaded_tokenizer = pickle.load(handle)
+    with open('tokenizer_' + profile + '.pickle', 'rb') as handle:
+        loaded_tokenizer = pickle.load(handle)
 
-txt = []
-with open('classif_text','r') as f:
-    lines = f.readlines()
-    for line in lines:
-        txt.append(line.replace('\n', ''))
+    dataframe = pandas.read_csv(profile + ".csv", header=None)
+    dataset = dataframe.values
+    # split into input (X) and output (Y) variables
+    X = dataset[:, 0]
+    x_train = loaded_tokenizer.texts_to_sequences(X)
+    max_len = max(len(l) for l in x_train)
+    txt = []
+    answer = ["What is your favourite hobby?", "what do you like to do?", "Hey what's up"]
 
-max_len = max(len(l) for l in loaded_tokenizer.texts_to_sequences(X))
-for seq in txt:
-    sentence = loaded_tokenizer.texts_to_sequences([seq])
-    padded = pad_sequences(sentence, maxlen=max_len, padding='post')
-    pred = loaded_model.predict(padded)
-    print(pred)
+    with open('testset_extras.txt', 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            txt.append(line.replace('\n', ''))
+
+    for seq in txt:
+        sentence = loaded_tokenizer.texts_to_sequences([seq])
+        padded = pad_sequences(sentence, maxlen=max_len, padding='post')
+        pred = loaded_model.predict(padded)
+        ratio = max([Levenshtein.ratio(seq, s) for s in answer])
+
+        print(seq + ': ')
+        print(pred)
+        print('similarity ratio =' + str(ratio))
