@@ -9,6 +9,7 @@ import os
 import Levenshtein
 from operator import itemgetter
 import datetime
+import configparser as cfg
 
 original_cwd = os.getcwd()
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -31,7 +32,14 @@ sys.path.remove(os.path.dirname(os.path.realpath(__file__)) + "/core")
 import colorama
 import random
 
-bot_token = '1055199459:AAHhDkFSHAPS9CnCFJ0eKXoSoWqslPtzhDw'
+
+def read_token_from_config_file(config):
+    parser = cfg.ConfigParser()
+    parser.read(config)
+    return parser.get('creds', 'token')
+
+bot_token = read_token_from_config_file('config.cfg')
+
 bot = telebot.TeleBot(token=bot_token, threaded=False)
 known_users = []
 setup_users = {}
@@ -42,7 +50,6 @@ commands = {  # command description used in the "help" command
     'setup': 'Prompts you to give me an identity',
     'quicksetup': 'Quickly setup with default identity'
 }
-
 
 def get_user_step(uid):
     if uid in setup_users:

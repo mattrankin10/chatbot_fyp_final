@@ -191,6 +191,7 @@ Chatbot-FYP/*
 nmt-chatbot/classify-models
 nmt-chatbot/model
 nmt-chatbot/model-profile
+nmt-chatbot/config.cfg
 
 
 model
